@@ -1,0 +1,8 @@
+#pragma once
+
+#cmakedefine BUILD_FUNNY_COMPONENT
+
+inline char const *example_message()
+{
+	return "@EXAMPLE_FUNNY_MESSAGE@";
+}

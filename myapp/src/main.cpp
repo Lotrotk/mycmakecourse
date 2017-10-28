@@ -2,7 +2,7 @@
 
 int main()
 {
-	print_funny("Hello World !");
+	print_funny(example_message());
 
 	return 0;
 }
