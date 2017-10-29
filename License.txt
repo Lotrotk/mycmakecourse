@@ -1,0 +1,2 @@
+
+By accepting this license, you state that you have fully understood all of the examples until now and that you have decided that you really do like cmake.

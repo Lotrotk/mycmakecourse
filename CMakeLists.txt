@@ -8,3 +8,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(myapp)
 add_subdirectory(mylibrary)
+
+message("Tutorial : Configuring package installer")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+include(CPack)
