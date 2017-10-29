@@ -51,6 +51,13 @@ install(EXPORT targets
 	DESTINATION "cmake"
 	COMPONENT targets
 )
+#export build targets, so that other projects can link to the build instead of install
+#for some reason the other projects do not include the build commands, so there is no real use for this case
+#but other targets (e.g. generated files and such) may be of more interest
+message("Tutorial : Generating ${CMAKE_CURRENT_BINARY_DIR}/${package_name}Targets.cmake")
+export(EXPORT targets
+	FILE "${package_name}Targets.cmake"
+)
 
 #useful cmake utility to generate config files
 include(CMakePackageConfigHelpers)
