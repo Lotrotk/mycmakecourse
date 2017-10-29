@@ -1,0 +1,6 @@
+@PACKAGE_INIT@
+
+get_filename_component(mylibrary_cmake_dir "${CMAKE_CURRENT_LIST_FILE}" PATH)
+include("${mylibrary_cmake_dir}/mylibraryTargets.cmake")
+check_required_components(@package_name@)
+

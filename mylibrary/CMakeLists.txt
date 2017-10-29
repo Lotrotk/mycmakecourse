@@ -24,6 +24,9 @@ target_include_directories(mylibrary
 	"$<INSTALL_INTERFACE:include>"
 )
 
+set(major_version 1)
+set(minor_version 0)
+
 #install library
 message("Tutorial : Configuring ${CMAKE_INSTALL_PREFIX}/lib/mylibrary")
 install(TARGETS mylibrary
@@ -44,7 +47,31 @@ set(package_name mylibrary)
 #install targets, so that other projects can link to the installed library using find_package()
 message("Tutorial : Configuring ${CMAKE_INSTALL_PREFIX}/cmake/${package_name}Targets.cmake")
 install(EXPORT targets
-	FILE "Find${package_name}.cmake"
+	FILE "${package_name}Targets.cmake"
 	DESTINATION "cmake"
 	COMPONENT targets
+)
+
+#useful cmake utility to generate config files
+include(CMakePackageConfigHelpers)
+
+#generate the config and configversion files in the binary dir, so that other projects can link to the built library
+#complete the config file
+message("Tutorial : Generating ${CMAKE_CURRENT_BINARY_DIR}/${package_name}Config.cmake")
+configure_package_config_file("${package_name}Config.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/${package_name}Config.cmake"
+                              INSTALL_DESTINATION "cmake"
+)
+#generate the config version file
+message("Tutorial : Generating ${CMAKE_CURRENT_BINARY_DIR}/${package_name}ConfigVersion.cmake")
+write_basic_package_version_file(
+  "${CMAKE_CURRENT_BINARY_DIR}/${package_name}ConfigVersion.cmake"
+  VERSION "${major_version}.${minor_version}"
+  COMPATIBILITY AnyNewerVersion
+)
+#install the config files
+message("Tutorial : Configuring ${CMAKE_INSTALL_PREFIX}/${package_name}Config.cmake and ${CMAKE_INSTALL_PREFIX}/${package_name}ConfigVersion.cmake")
+install(
+	FILES "${CMAKE_CURRENT_BINARY_DIR}/${package_name}Config.cmake" "${CMAKE_CURRENT_BINARY_DIR}/${package_name}ConfigVersion.cmake"
+	DESTINATION "cmake"
+	COMPONENT config
 )
