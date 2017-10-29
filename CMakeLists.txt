@@ -4,7 +4,7 @@ set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/../install" CACHE PATH "In
 cmake_minimum_required(VERSION 3.1)
 project(TUTORIAL)
 
-set(CMAKE_CXX_STANDARD 11)
+set(configured_from_root True)
 
 add_subdirectory(myapp)
 add_subdirectory(mylibrary)
