@@ -3,5 +3,10 @@ project(TUTORIAL)
 
 set(CMAKE_CXX_STANDARD 11)
 
+include (CTest)
+enable_testing()
+
+include_directories(mylibrary/include)
+
 add_subdirectory(myapp)
 add_subdirectory(mylibrary)
