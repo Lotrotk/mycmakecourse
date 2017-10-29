@@ -44,7 +44,7 @@ set(package_name mylibrary)
 #install targets, so that other projects can link to the installed library using find_package()
 message("Tutorial : Configuring ${CMAKE_INSTALL_PREFIX}/cmake/${package_name}Targets.cmake")
 install(EXPORT targets
-	FILE "${package_name}Targets.cmake"
+	FILE "Find${package_name}.cmake"
 	DESTINATION "cmake"
 	COMPONENT targets
 )

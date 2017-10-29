@@ -15,9 +15,9 @@ set(sources
 
 if(NOT configured_from_root)
 	message("Tutorial : Target mylibrary not defined. Commence search...")
-	#Naive implementation, simply include the required targets.
-	set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" CACHE PATH "directories browsed by include()")
-	include("mylibraryTargets")
+	#This is so called 'module mode', where CMake will search for *Find.cmake files
+	set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" CACHE PATH "Directory containing mylibraryFind.cmake")
+	find_package(mylibrary REQUIRED MODULE)
 endif()
 
 message("Tutorial : Configuring ${CMAKE_CURRENT_BINARY_DIR}/myapp")
