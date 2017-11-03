@@ -55,6 +55,9 @@ install(EXPORT targets
 #useful cmake utility to generate config files
 include(CMakePackageConfigHelpers)
 
+#this variable will be visible to the config file
+list(APPEND my_installed_components funny_print)
+
 #generate the config and configversion files in the binary dir, so that other projects can link to the built library
 #complete the config file
 message("Tutorial : Generating ${CMAKE_CURRENT_BINARY_DIR}/${package_name}Config.cmake")

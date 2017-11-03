@@ -17,7 +17,9 @@ if(NOT configured_from_root)
 	message("Tutorial : Target mylibrary not defined. Commence search...")
 	#This is so called 'config mode', where CMake will search for *Config files. It uses the CMAKE_PREFIX_PATH to find those.
 	#It will also look in mylibrary_DIR for that config file. The gui will automatically prompt the user for that directory.
-	find_package(mylibrary 0.9 REQUIRED CONFIG)
+	find_package(mylibrary 0.9 REQUIRED CONFIG
+		COMPONENTS funny_print
+	)
 endif()
 
 message("Tutorial : Configuring ${CMAKE_CURRENT_BINARY_DIR}/myapp")

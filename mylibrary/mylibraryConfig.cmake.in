@@ -1,6 +1,16 @@
 @PACKAGE_INIT@
 
+#normally, if a package contains components, it means that they too are all separate packages,
+#and this package simply includes them by iterating the variable ${mylibrary_FIND_COMPONENTS}
+#here we set these components purely as an example, and also to demonstrate that they are unrelated to the COMPONENT setting in the install() function
+function(add_my_components components)
+	foreach(comp ${components})
+		set(@package_name@_${comp}_FOUND TRUE PARENT_SCOPE)
+	endforeach()
+endfunction()
+
 get_filename_component(mylibrary_cmake_dir "${CMAKE_CURRENT_LIST_FILE}" PATH)
 include("${mylibrary_cmake_dir}/mylibraryTargets.cmake")
+add_my_components(@my_installed_components@)
 check_required_components(@package_name@)
 
