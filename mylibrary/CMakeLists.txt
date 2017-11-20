@@ -9,3 +9,6 @@ set(sources
 
 message("Tutorial : Configuring ${CMAKE_CURRENT_BINARY_DIR}/mylibrary")
 add_library(mylibrary ${sources} ${headers})
+target_include_directories(mylibrary
+	PUBLIC include
+)
